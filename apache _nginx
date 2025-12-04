@@ -1,0 +1,40 @@
+first create instance 
+install apach nd nginx server on ec2
+#for apache---(/var/www/html/)
+    sudo yum install httpd -y
+    sudo systemctl start httpd
+    sudo systemctl enable httpd
+
+#for nginx (/usr/share/nginx/html) this root path
+sudo df install nginx -y
+sudo systemctl start nginx
+sudo systemctl enable nginx
+
+#git install nd clone
+sudo yum install git -y
+git clone https://github.com/yourusername/sample-html-project.git
+
+move file apache or nginx
+sudo mv ~/demo1/* /var/www/html/
+sudo mv ~/demo1/* /usr/share/nginx/html/
+   (      sudo cp -r /var/www/html/* /usr/share/nginx/html/) use this if u want run at time in bothe server
+
+#then open page 
+http://<EC2-Public-IP>/
+
+how to chnge port 
+cat /etc/nginx/nginx.conf ## this for nginx go nd chngre listner port 
+cat/etc/httpd/conf/httpd.conf
+sudo systemctl restart nginx
+
+## tochck ports
+sudo lsof -i :80 or 8080 #its show  server run on which port
+
+### now -----
+Apache → http://<EC2-IP>/index.html (port 80)
+Nginx → http://<EC2-IP>:8080/index.html (port 8080)
+
+use  http:/ip/page name or http:/ip:8080/ page name
+
+
+
